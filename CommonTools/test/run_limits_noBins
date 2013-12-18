@@ -1,0 +1,6 @@
+python buildWVworkspace.py muon dkglZ
+python buildWVworkspace.py electron dkglZ
+rm wv_semil_elmucombined_dkglZ.txt
+combineCards.py wv_semil_elboosted_dkglZ.txt wv_semil_muboosted_dkglZ.txt > wv_semil_elmucombined_dkglZ.txt
+text2workspace.py -m 126 wv_semil_elmucombined_dkglZ.txt -o Example_ATGC_WV_elmu_workspace_dkglZ.root -P CombinedEWKAnalysis.CommonTools.HagiwaraAndZeppenfeldTwoDimensionalModel:dkglZModel
+combine Example_ATGC_WV_elmu_workspace_dkglZ.root -M MultiDimFit -P dkg -P lZ --floatOtherPOIs=0 --algo=grid --points=10000 --minimizerStrategy=2
