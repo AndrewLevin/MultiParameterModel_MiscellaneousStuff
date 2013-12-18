@@ -1,6 +1,0 @@
-python buildWZworkspace.py ch1 dkglZ
-python buildWZworkspace.py ch2 dkglZ
-rm wv_semil_ch12combined_dkglZ.txt
-combineCards.py wv_semil_ch1boosted_dkglZ.txt wv_semil_ch2boosted_dkglZ.txt > wv_semil_ch12combined_dkglZ.txt
-text2workspace.py -m 126 wv_semil_ch12combined_dkglZ.txt -o Example_ATGC_WV_ch12_workspace_dkglZ.root -P CombinedEWKAnalysis.CommonTools.HagiwaraAndZeppenfeldTwoDimensionalModel_wz:dkglZModel_wz
-combine Example_ATGC_WV_ch12_workspace_dkglZ.root -M MultiDimFit -P dkg -P lZ --floatOtherPOIs=0 --algo=grid --points=10000 --minimizerStrategy=2

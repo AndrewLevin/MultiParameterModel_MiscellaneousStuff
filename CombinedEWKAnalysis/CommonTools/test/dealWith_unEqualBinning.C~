@@ -1,7 +1,0 @@
-void dealWith_unEqualBinning(TString file_name){
-
-  TFile * file_in=new TFile(file_name,"read");
-  file_in->cd();
-  file_in.ls();
-
-}
