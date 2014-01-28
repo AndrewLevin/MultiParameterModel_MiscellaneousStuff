@@ -19,8 +19,8 @@ if (len(sys.argv) != 3):
 sigFile=sys.argv[1]
 output_file_name=sys.argv[2]
 
-print "using input_file: "+ sigFile
-print "using output_file: "+ output_file_name
+print "input file: "+ sigFile
+print "output file: "+ output_file_name
 
 sigObj='bin_content_lam_dk_1'
 
