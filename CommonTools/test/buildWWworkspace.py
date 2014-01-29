@@ -36,6 +36,10 @@ for key in f.GetListOfKeys():
                           th1d_shape)
     if th1d_shape.GetName() == "histo_WWewk":
         ww_ewk_dh=roodh
+    if th1d_shape.GetName() == "histo_WWewk_CMS_scale_jUp":
+        ww_ewk_dh_j_up=roodh
+    if th1d_shape.GetName() == "histo_WWewk_CMS_scale_jDown":
+        ww_ewk_dh_j_down=roodh
     getattr(theWS, 'import')(roodh)
 
 param1 = theWS.factory('param1[0.,-0.15, 0.15]')
@@ -48,6 +52,16 @@ ww_ewk_pdf = RooHistFunc('ww_ewk_pdf',
                          varSet,
                          ww_ewk_dh)
 
+ww_ewk_pdf_j_up = RooHistFunc('ww_ewk_pdf_j_up',
+                         'ww_ewk_pdf_j_up',
+                         varSet,
+                         ww_ewk_dh_j_up)
+
+ww_ewk_pdf_j_down = RooHistFunc('ww_ewk_pdf_j_down',
+                         'ww_ewk_pdf_j_down',
+                         varSet,
+                         ww_ewk_dh_j_down)
+
 aQGCPdf = RooTwoParameterModelPdf('aqgc_2d',
                                  'aqgc_2d',
                                  observable,
@@ -56,7 +70,25 @@ aQGCPdf = RooTwoParameterModelPdf('aqgc_2d',
                                  ww_ewk_pdf,
                                  '/home/anlevin/2d_limit_fw/CMSSW_6_1_1/src/CombinedEWKAnalysis/CommonTools/test/input_forNewF.root')
 
+aQGCPdf_scale_jUp = RooTwoParameterModelPdf('aqgc_2d_CMS_scale_jUp',
+                                 'aqgc_2d_CMS_scale_jUp',
+                                 observable,
+                                 param1,
+                                 param2,                                 
+                                 ww_ewk_pdf_j_up,
+                                 '/home/anlevin/2d_limit_fw/CMSSW_6_1_1/src/CombinedEWKAnalysis/CommonTools/test/input_forNewF.root')
+
+aQGCPdf_scale_jDown = RooTwoParameterModelPdf('aqgc_2d_CMS_scale_jDown',
+                                 'aqgc_2d_CMS_scale_jDown',
+                                 observable,
+                                 param1,
+                                 param2,                                 
+                                 ww_ewk_pdf_j_down,
+                                 '/home/anlevin/2d_limit_fw/CMSSW_6_1_1/src/CombinedEWKAnalysis/CommonTools/test/input_forNewF.root')
+
 getattr(theWS, 'import')(aQGCPdf)
+getattr(theWS, 'import')(aQGCPdf_scale_jUp)
+getattr(theWS, 'import')(aQGCPdf_scale_jDown)
 
 theWS.Print()
 
@@ -73,7 +105,7 @@ kmax * number of nuisance parameters
 Observation 1.999427
 shapes *   *   ./ss_ww_shapes.root  ss_ww_wspace:histo_$PROCESS ss_ww_wspace:histo_$PROCESS_$SYSTEMATIC
 shapes data_obs * ./ss_ww_shapes.root  ss_ww_wspace:histo_WWewk 
-shapes WWewk * ./ss_ww_shapes.root ss_ww_wspace:aqgc_2d
+shapes WWewk * ./ss_ww_shapes.root ss_ww_wspace:aqgc_2d ss_ww_wspace:aqgc_2d_$SYSTEMATIC
 bin wwssll8TeV wwssll8TeV wwssll8TeV wwssll8TeV wwssll8TeV wwssll8TeV
 process WWewk WWqcd WZ WS VVV Wjets
 process 0 1 2 3 4 5
@@ -82,7 +114,7 @@ lumi_8TeV                               lnN  1.026 1.026 1.026 1.026 1.026   -
 CMS_eff_l                                   shape   - 1.000 1.000 1.000 1.000   -  
 CMS_p_scale_l                                   shape   - 1.000 1.000 1.000 1.000   -  
 CMS_scale_met                        shape   - 1.000 1.000 1.000 1.000   -  
-CMS_scale_j                          shape   - 1.000 1.000 1.000 1.000   -  
+CMS_scale_j                          shape   1.000 1.000 1.000 1.000 1.000   -  
 pdf_qqbar                              lnN   1.073 1.068 1.069   -     -     -  
 QCDscale_WWewk		               lnN   1.050   -     -     -     -     -  
 QCDscale_WWqcd		               lnN    -   1.160   -     -     -     -  
