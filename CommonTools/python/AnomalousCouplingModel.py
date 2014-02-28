@@ -38,8 +38,6 @@ class AnomalousCouplingModel(PhysicsModel):
 
         for poi in self.pois:
             lower = self.anomCoupSearchWindows[poi][0]
-            print "lower"
-            print lower
             upper = self.anomCoupSearchWindows[poi][1]
             self.modelBuilder.doVar('%s[%s,%s]'%(poi,lower,upper))
         self.modelBuilder.doSet('POI',','.join(self.pois))
@@ -54,19 +52,12 @@ class AnomalousCouplingModel(PhysicsModel):
                 idx = '%s_%s'%(process,channel)
                 self.processScaling[idx] = self.buildScaling(process,channel)
 
-        # display the glory of our work
-        #print 'self.modelBuilder.out.Print()'
-        #self.modelBuilder.out.Print()
-        #print 'self.processScaling'
-        #print self.processScaling
-
     def getYieldScale(self,bin,process):
-        for idx, grid_label in self.processScaling.iteritems():
-            if process==grid_label:
-                print "using grid_label:"
-                print grid_label
-                return 'Scaling_'+grid_label
-        return 1
+        if process=='WWewk':
+            return 'Scaling_WWewk_'+bin
+        else:
+            return 1
+
         
 
     
