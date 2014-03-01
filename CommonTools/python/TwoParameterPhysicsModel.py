@@ -34,10 +34,10 @@ class HagiwaraAndZeppenfeldTwoDimensionalModel(AnomalousCouplingModel):
         #self.modelBuilder.out._import(yield_scaling4)
 
         
-        self.modelBuilder.factory_('RooTwoParameterModelScaling::Scaling_WWewk_ch1(param1,param2,"~/2d_limit/CMSSW_6_1_1/src/CombinedEWKAnalysis/CommonTools/test/aQGC_grids_refined.root","aQGC_scaling1")')
-        self.modelBuilder.factory_('RooTwoParameterModelScaling::Scaling_WWewk_ch2(param1,param2,"~/2d_limit/CMSSW_6_1_1/src/CombinedEWKAnalysis/CommonTools/test/aQGC_grids_refined.root","aQGC_scaling2")')
-        self.modelBuilder.factory_('RooTwoParameterModelScaling::Scaling_WWewk_ch3(param1,param2,"~/2d_limit/CMSSW_6_1_1/src/CombinedEWKAnalysis/CommonTools/test/aQGC_grids_refined.root","aQGC_scaling3")')
-        self.modelBuilder.factory_('RooTwoParameterModelScaling::Scaling_WWewk_ch4(param1,param2,"~/2d_limit/CMSSW_6_1_1/src/CombinedEWKAnalysis/CommonTools/test/aQGC_grids_refined.root","aQGC_scaling4")')        
+        self.modelBuilder.factory_('RooTwoParameterModelScaling::Scaling_WWewk_ch1(param1,param2,"~/2d_limit/CMSSW_6_1_1/src/TwoParameterModel_MiscellaneousStuff/CommonTools/test/aQGC_grids_refined.root","aQGC_scaling1")')
+        self.modelBuilder.factory_('RooTwoParameterModelScaling::Scaling_WWewk_ch2(param1,param2,"~/2d_limit/CMSSW_6_1_1/src/TwoParameterModel_MiscellaneousStuff/CommonTools/test/aQGC_grids_refined.root","aQGC_scaling2")')
+        self.modelBuilder.factory_('RooTwoParameterModelScaling::Scaling_WWewk_ch3(param1,param2,"~/2d_limit/CMSSW_6_1_1/src/TwoParameterModel_MiscellaneousStuff/CommonTools/test/aQGC_grids_refined.root","aQGC_scaling3")')
+        self.modelBuilder.factory_('RooTwoParameterModelScaling::Scaling_WWewk_ch4(param1,param2,"~/2d_limit/CMSSW_6_1_1/src/TwoParameterModel_MiscellaneousStuff/CommonTools/test/aQGC_grids_refined.root","aQGC_scaling4")')        
         #self.modelBuilder.factory_('RooTwoParameterModelScaling::Scaling_WWewk_ch1(param1,param2,"/home/anlevin/2d_limit_fw/CMSSW_6_1_1/src/CombinedEWKAnalysis/CommonTools/test/aQGC_grids_sign1_refined.root","aQGC_scaling1")')
         #self.modelBuilder.factory_('RooTwoParameterModelScaling::Scaling_WWewk_ch2(param1,param2,"/home/anlevin/2d_limit_fw/CMSSW_6_1_1/src/CombinedEWKAnalysis/CommonTools/test/aQGC_grids_sign1_refined.root","aQGC_scaling2")')
         #self.modelBuilder.factory_('RooTwoParameterModelScaling::Scaling_WWewk_ch3(param1,param2,"/home/anlevin/2d_limit_fw/CMSSW_6_1_1/src/CombinedEWKAnalysis/CommonTools/test/aQGC_grids_sign1_refined.root","aQGC_scaling3")')
