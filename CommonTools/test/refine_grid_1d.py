@@ -34,7 +34,7 @@ for key in sigFile.GetListOfKeys():
     print "par1GridMin:"+str(par1GridMin)
     print "par1GridMax:"+str(par1GridMax)
     
-    func = TF1('fittingFunction','[0] + [1]*x + [2]*x*x,
+    func = TF1('fittingFunction','[0] + [1]*x + [2]*x*x',
                par1GridMin,par1GridMax)
         
     anom_th1d.Fit(func,'R0','')
