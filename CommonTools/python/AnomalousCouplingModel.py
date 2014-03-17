@@ -15,16 +15,14 @@ class AnomalousCouplingModel(PhysicsModel):
     def setPhysicsOptions(self,physOptions):
         """make the POI (anomalous couplings!) for each included mode"""
         for po in physOptions:
-            if po.startswith("modes="):
-                self.modes = po.replace("modes=","").split(",")
+            if po.startswith("scaling_filename="):
+                self.scaling_filename = po.replace("scaling_filename=","")
             if po.startswith("poi="):
                 self.pois = po.replace("poi=","").split(",")
             #process the relevant POIs
             for poi in self.pois:
-                if po.startswith("range_%s"%poi):
-                    self.anomCoupSearchWindows[poi] = po.replace\
-                                                      ("range_%s"%poi,"").\
-                                                      split(",")
+                if po.startswith("range_%s=["%poi):
+                    self.anomCoupSearchWindows[poi] = po.replace("range_%s=["%poi,"").replace(']','').split(",")
                     if len(self.anomCoupSearchWindows[poi]) != 2:
                         raise RuntimeError, "Anomalous couplings range definition requires two extrema"
                 elif float(self.anomCoupSearchWindows[poi][0]) >= float(self.anomCoupSearchWindows[poi][1]):
@@ -41,7 +39,7 @@ class AnomalousCouplingModel(PhysicsModel):
             upper = self.anomCoupSearchWindows[poi][1]
             self.modelBuilder.doVar('%s[%s,%s]'%(poi,lower,upper))
         self.modelBuilder.doSet('POI',','.join(self.pois))
-
+        
         # in the derived classes this takes care of loading the
         # correct cross section scalings for each contributing channel
         # this is a bit tricky, maybe, since different channels for the same
