@@ -25,8 +25,8 @@ class AnomalousCouplingModel(PhysicsModel):
                     self.anomCoupSearchWindows[poi] = po.replace("range_%s=["%poi,"").replace(']','').split(",")
                     if len(self.anomCoupSearchWindows[poi]) != 2:
                         raise RuntimeError, "Anomalous couplings range definition requires two extrema"
-                elif float(self.anomCoupSearchWindows[poi][0]) >= float(self.anomCoupSearchWindows[poi][1]):
-                    raise RuntimeError, "Anomalous coupling range: Extrema for anomalous coupling range defined with inverterd order. Second must be larger the first"
+                    if float(self.anomCoupSearchWindows[poi][0]) >= float(self.anomCoupSearchWindows[poi][1]):
+                        raise RuntimeError, "Anomalous coupling range: Extrema for anomalous coupling range defined with inverterd order. Second must be larger the first"
 
     def buildScaling(self,process,channel,lepchannel):
         raise RuntimeError('NotImplemented',
